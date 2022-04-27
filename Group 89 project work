@@ -1,0 +1,35 @@
+import 'dart:io'; // A package to import the stdin and stdout functions
+
+void main(List<String> args) {
+  print(showGrade()); //running the method showGrade
+}
+
+String showGrade([String? subjec, int? scor]) {
+  stdout.write("Enter Subject name: ");
+  String subject =
+      subjec ?? stdin.readLineSync()!; // to get the user value for subject
+
+  stdout.write("Enter your Score: ");
+  int score =
+      scor ?? int.parse(stdin.readLineSync()!); // to get user value for Score
+
+  late String _grade; //local variable to store the grade
+
+  // Condition to determine the Grade
+
+  if (score < 0 || score > 100) {
+    return "You have Entered an InValid score value";
+  } else if (score >= 80) {
+    _grade = "A";
+  } else if (score >= 60) {
+    _grade = "B";
+  } else if (score >= 50) {
+    _grade = "C";
+  } else if (score >= 40) {
+    _grade = "D";
+  } else {
+    _grade = "E";
+  }
+
+  return "Your grade for $subject is $_grade";
+}
